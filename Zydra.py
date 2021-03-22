@@ -90,7 +90,7 @@ class Zydra():
 
     def count_word(self, dict_file):
         count = 0
-        with open(dict_file, "r") as wordlist:
+        with open(dict_file, encoding='utf-8', errors='ignore') as wordlist:
             for line in wordlist:
                 count += 1
         return count
@@ -329,7 +329,7 @@ class Zydra():
                     algorythm = crypt_pass.split('$')[1].strip(' ')
                     salt = crypt_pass.split('$')[2].strip(' ')
                     salt_for_crypt = '$' + algorythm + '$' + salt + '$'
-                    with open(dict_file, "r") as wordlist:
+                    with open(dict_file, encoding='utf-8', errors='ignore') as wordlist:
                         for word in wordlist:
                             passwords_group.append(word)
                             last_check += 1
@@ -355,7 +355,7 @@ class Zydra():
                         self.last_process_number *= 2
             self.end_time()
         elif self.file_type == "zip":
-            with open(dict_file, "r") as wordlist:
+            with open(dict_file, encoding='utf-8', errors='ignore') as wordlist:
                 for word in wordlist:
                     passwords_group.append(word)
                     last_check += 1
@@ -381,7 +381,7 @@ class Zydra():
                 self.end_time()
         elif self.file_type == "pdf":
             self.decrypted_file_name = "decrypted_" + file.split('/')[-1]
-            with open(dict_file, "r") as wordlist:
+            with open(dict_file, encoding='utf-8', errors='ignore') as wordlist:
                 for word in wordlist:
                     passwords_group.append(word)
                     last_check += 1
@@ -406,7 +406,7 @@ class Zydra():
                 self.delete_temporary_directory()
                 self.end_time()
         elif self.file_type == "rar":
-            with open(dict_file, "r") as wordlist:
+            with open(dict_file, encoding='utf-8', errors='ignore') as wordlist:
                 for word in wordlist:
                     passwords_group.append(word)
                     last_check += 1
